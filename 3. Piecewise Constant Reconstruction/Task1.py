@@ -9,14 +9,22 @@ t = data['t'].squeeze()
 y = data['y'].squeeze()
 n = len(y)
 
-# Konstrukcja macierzy różnic D, tak aby (Dv)_i = v[i+1] - v[i]
+# Mamy zaszumiony sygnał i chcemy zrekonstruować oryginalny sygnał, który ma niewiele zmian poziomu
+
+# Konstrukcja macierzy różnic D, (Dv)_i = v[i+1] - v[i]
 D = np.zeros((n-1, n))
 for i in range(n-1):
     D[i, i] = -1
     D[i, i+1] = 1
 
+# Zadanie 1
+# Minimalizacja błędu kwadratowego - nie pozwalamy sygnałowi na duże odchylenia
+#
+# Zadanie 2
+# LASSO - im większy parametr tau tym bardziej preferowany jest sygnał z mniejszą ilością skoków
+#
 # ---------------------------
-# Zadanie 1 - Rozwiązania przy użyciu CVXPY
+# Rozwiązania przy użyciu CVXPY
 # ---------------------------
 q_values = [0.5, 1, 2]
 tau_values = [0.1, 1, 10]
@@ -61,7 +69,7 @@ plt.tight_layout()
 plt.show()
 
 # ---------------------------
-# Zadanie 2 - Rozwiązanie LP przy użyciu linprog
+# Rozwiązanie LP przy użyciu linprog
 # ---------------------------
 q_lp = 1
 
