@@ -1,2 +1,0 @@
-Implementacja iteracyjnych metod rozwiązywania układów równań liniowych 
-Algorytm Levenberga–Marquardta to metoda optymalizacji nieliniowych problemów najmniejszych kwadratów, która łączy zalety metody Gaussa-Newtona i spadku gradientu. Działa poprzez adaptacyjne dostosowywanie kroku iteracji przy użyciu parametru tłumiącego, co umożliwia stabilne i efektywne zbliżanie się do rozwiązania.
